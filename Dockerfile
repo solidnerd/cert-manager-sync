@@ -1,9 +1,17 @@
-FROM golang:1.20-bullseye as builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.20-bullseye as builder
+
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+ARG TARGETOS
+ARG TARGETARCH
 
 WORKDIR /app
-
+COPY go.* .
+RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o certsync *.go
+ARG CGO_ENABLED=0
+RUN --mount=type=cache,target=/root/.cache/go-build  GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags="-w -s" -o certsync main.go
+
 
 FROM alpine:3.18 as certs
 
