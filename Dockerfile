@@ -10,7 +10,7 @@ COPY go.* .
 RUN go mod download
 COPY . .
 ARG CGO_ENABLED=0
-RUN --mount=type=cache,target=/root/.cache/go-build  GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags="-w -s" -o certsync main.go
+RUN --mount=type=cache,target=/root/.cache/go-build  GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags="-w -s" -o certsync *.go
 
 
 FROM alpine:3.18 as certs
