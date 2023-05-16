@@ -3,7 +3,6 @@ module github.com/robertlestak/cert-manager-sync
 go 1.18
 
 require (
-	cloud.google.com/go v0.107.0
 	cloud.google.com/go/certificatemanager v1.6.0
 	github.com/aws/aws-sdk-go v1.44.13
 	github.com/google/uuid v1.3.0
@@ -16,6 +15,7 @@ require (
 )
 
 require (
+	cloud.google.com/go v0.107.0 // indirect
 	cloud.google.com/go/compute v1.18.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/longrunning v0.3.0 // indirect
@@ -25,7 +25,7 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/cenkalti/backoff/v3 v3.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/emicklei/go-restful v2.9.5+incompatible // indirect
+	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/fatih/color v1.7.0 // indirect
 	github.com/go-logr/logr v1.2.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
